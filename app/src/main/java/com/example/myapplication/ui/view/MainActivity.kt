@@ -1,32 +1,31 @@
 package com.example.myapplication.ui.view
 
-import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.fragment.app.Fragment
 import com.example.myapplication.R
 import com.example.myapplication.databinding.ActivityMainBinding
-import com.example.myapplication.ui.main.adapter.MainAdapter
-import com.example.myapplication.ui.main.base.MainViewModelFactory
-import com.example.myapplication.ui.main.viewmodel.MainViewModel
-import com.example.myapplication.utils.Status
+import com.example.myapplication.ui.main.fragment.photos.PhotosFragment
+import com.example.myapplication.ui.main.fragment.photos.adapter.PhotosAdapter
+import com.example.myapplication.ui.main.fragment.videos.VideosFragment
 
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var dataBinding: ActivityMainBinding
-    private lateinit var mainAdapter: MainAdapter
-    private lateinit var loadingDialog: Dialog
+    private lateinit var photosAdapter: PhotosAdapter
+    private lateinit var photosFragment: PhotosFragment
+    private lateinit var videosFragment: VideosFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initialize()
         addDataToViews()
+        addActionOnViews()
     }
+
 
     private fun initialize() {
         dataBinding = DataBindingUtil.inflate(
@@ -37,40 +36,31 @@ class MainActivity : AppCompatActivity() {
         )
         setContentView(dataBinding.root)
 
-        mainAdapter = MainAdapter()
-        dataBinding.recyclerviewPhoto.layoutManager = GridLayoutManager(this, 2)
-        dataBinding.recyclerviewPhoto.adapter = mainAdapter
+        photosFragment = PhotosFragment()
+        videosFragment = VideosFragment()
+
     }
+
 
     private fun addDataToViews() {
-        val mainViewModel = ViewModelProvider(
-            this,
-            MainViewModelFactory(application)
-        ).get(
-            MainViewModel::class.java
-        )
-        lifecycleScope.launchWhenResumed {
-            mainViewModel.pexelsPhotosLiveData.observe(this@MainActivity, {
-                when (it.status) {
-                    Status.ERROR -> {
-                        loadingDialog.dismiss()
-                    }
+        makeCurrentFragment(photosFragment)
+    }
 
-                    Status.LOADING -> {
-                        loadingDialog = Dialog(this@MainActivity)
-                        loadingDialog.setCancelable(false)
-                        loadingDialog.setContentView(R.layout.loading_dialog_layout)
-                        loadingDialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
-                        loadingDialog.show()
-                    }
-
-                    Status.SUCCESS -> {
-                        loadingDialog.dismiss()
-                        mainAdapter.submitList(it.data)
-
-                    }
-                }
-            })
+    private fun makeCurrentFragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction().apply {
+            replace(R.id.frame_layout_content, fragment).commit()
         }
     }
+
+    private fun addActionOnViews() {
+        dataBinding.bottomNavigationMain.setOnNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.item_photo_library -> makeCurrentFragment(photosFragment)
+                R.id.item_video_library -> makeCurrentFragment(videosFragment)
+            }
+            true
+        }
+    }
+
+
 }

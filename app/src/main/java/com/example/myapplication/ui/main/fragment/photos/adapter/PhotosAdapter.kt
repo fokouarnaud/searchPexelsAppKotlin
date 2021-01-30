@@ -1,6 +1,5 @@
-package com.example.myapplication.ui.main.adapter
+package com.example.myapplication.ui.main.fragment.photos.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,8 +10,8 @@ import com.bumptech.glide.Glide
 import com.example.myapplication.R
 import com.example.myapplication.data.model.PexelsPhoto
 
-class MainAdapter:
-    ListAdapter<PexelsPhoto, MainAdapter.ViewHolderPhotos>(PhotosDiffCallBack()) {
+class PhotosAdapter:
+    ListAdapter<PexelsPhoto, PhotosAdapter.ViewHolderPhotos>(PhotosDiffCallBack()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderPhotos {
         return ViewHolderPhotos(

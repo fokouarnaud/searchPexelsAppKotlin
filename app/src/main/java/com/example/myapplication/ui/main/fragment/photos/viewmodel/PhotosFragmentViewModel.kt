@@ -1,4 +1,4 @@
-package com.example.myapplication.ui.main.viewmodel
+package com.example.myapplication.ui.main.fragment.photos.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.LiveData
@@ -9,7 +9,7 @@ import com.example.myapplication.data.model.PexelsPhoto
 import com.example.myapplication.data.repository.MainRepository
 import com.example.myapplication.utils.Resource
 
-class MainViewModel(application: Application) : ViewModel() {
+class PhotosFragmentViewModel(application: Application) : ViewModel() {
 
     var pexelsPhotosLiveData: LiveData<Resource<List<PexelsPhoto>>>
     private val instanceMainRepository: MainRepository =

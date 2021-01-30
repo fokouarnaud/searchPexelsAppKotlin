@@ -1,4 +1,4 @@
-package com.example.myapplication.ui.main.adapter
+package com.example.myapplication.ui.main.fragment.photos.adapter
 
 import androidx.recyclerview.widget.DiffUtil
 import com.example.myapplication.data.model.PexelsPhoto

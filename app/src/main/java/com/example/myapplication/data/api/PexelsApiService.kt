@@ -1,6 +1,7 @@
 package com.example.myapplication.data.api
 
 import com.example.myapplication.data.model.PexelsPhotoResponse
+import com.example.myapplication.data.model.PexelsVideoResponse
 import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.Query
@@ -19,4 +20,13 @@ interface  PexelsApiService {
         @Query("per_page") perPage:Int,
         @Query("page") page:Int,
     ):PexelsPhotoResponse
+
+    @Headers("Authorization: $API_KEY")
+    @GET("videos/search")
+    suspend fun searchVideos(
+        @Query("query") query:String,
+        @Query("orientation") orientation:String,
+        @Query("per_page") perPage:Int,
+        @Query("page") page:Int,
+    ):PexelsVideoResponse
 }
