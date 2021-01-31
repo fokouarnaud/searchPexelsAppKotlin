@@ -1,37 +1,23 @@
 package com.example.myapplication.ui.main.fragment.photos.viewmodel
 
 import android.app.Application
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.liveData
-import com.example.myapplication.R
+import androidx.lifecycle.viewModelScope
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import androidx.paging.cachedIn
+import com.example.myapplication.data.api.PexelsApiAccess
 import com.example.myapplication.data.model.PexelsPhoto
-import com.example.myapplication.data.repository.MainRepository
-import com.example.myapplication.utils.Resource
+import com.example.myapplication.data.repository.PexelsPhotoPagingSource
+import kotlinx.coroutines.flow.Flow
+
 
 class PhotosFragmentViewModel(application: Application) : ViewModel() {
 
-    var pexelsPhotosLiveData: LiveData<Resource<List<PexelsPhoto>>>
-    private val instanceMainRepository: MainRepository =
-        MainRepository.getInstance(application)
+    private val apiService = PexelsApiAccess.getApiService()
+    val pexelsPhotosLiveData: Flow<PagingData<PexelsPhoto>> = Pager(PagingConfig(pageSize = 20)) {
+        PexelsPhotoPagingSource(apiService)
+    }.flow.cachedIn(viewModelScope)
 
-    init {
-        pexelsPhotosLiveData = liveData {
-            emit(Resource.loading(null))
-            try {
-                emit(Resource.success(
-                    instanceMainRepository.searchPhotos().photos
-                )
-                )
-            } catch (exception: Exception) {
-                emit(
-                    Resource.error(
-                        application.applicationContext.getString(
-                            R.string.erreur_chargement
-                        ), null
-                    )
-                )
-            }
-        }
-    }
 }

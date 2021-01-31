@@ -14,6 +14,7 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
         vectorDrawables.useSupportLibrary true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -43,6 +44,12 @@ dependencies {
     def lifecycle_version = "2.2.0"
     def retrofit_version = "2.7.2"
     def room_version = "2.2.6"
+    def paging_version = "3.0.0-alpha03"
+
+    //paging
+    implementation "androidx.paging:paging-runtime:$paging_version"
+    implementation "androidx.paging:paging-rxjava2:$paging_version"
+    implementation "androidx.paging:paging-guava:$paging_version"
 
     //LiveData
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
