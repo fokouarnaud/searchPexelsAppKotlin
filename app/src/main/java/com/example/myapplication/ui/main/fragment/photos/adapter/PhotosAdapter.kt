@@ -14,6 +14,8 @@ class PhotosAdapter :
     PagingDataAdapter<PexelsPhoto, PhotosAdapter.ViewHolderPhotos>(PhotosDiffCallBack()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderPhotos {
+
+
         return ViewHolderPhotos(
             LayoutInflater.from(parent.context).inflate(
                 R.layout.item_photo,

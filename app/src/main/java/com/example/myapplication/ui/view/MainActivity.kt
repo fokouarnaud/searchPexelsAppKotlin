@@ -8,14 +8,12 @@ import androidx.fragment.app.Fragment
 import com.example.myapplication.R
 import com.example.myapplication.databinding.ActivityMainBinding
 import com.example.myapplication.ui.main.fragment.photos.PhotosFragment
-import com.example.myapplication.ui.main.fragment.photos.adapter.PhotosAdapter
 import com.example.myapplication.ui.main.fragment.videos.VideosFragment
 
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var dataBinding: ActivityMainBinding
-    private lateinit var photosAdapter: PhotosAdapter
     private lateinit var photosFragment: PhotosFragment
     private lateinit var videosFragment: VideosFragment
 
@@ -43,10 +41,10 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun addDataToViews() {
-        makeCurrentFragment(photosFragment)
+        setCurrentFragment(photosFragment)
     }
 
-    private fun makeCurrentFragment(fragment: Fragment) {
+    private fun setCurrentFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction().apply {
             replace(R.id.frame_layout_content, fragment).commit()
         }
@@ -55,8 +53,8 @@ class MainActivity : AppCompatActivity() {
     private fun addActionOnViews() {
         dataBinding.bottomNavigationMain.setOnNavigationItemSelectedListener {
             when (it.itemId) {
-                R.id.item_photo_library -> makeCurrentFragment(photosFragment)
-                R.id.item_video_library -> makeCurrentFragment(videosFragment)
+                R.id.item_photo_library -> setCurrentFragment(photosFragment)
+                R.id.item_video_library -> setCurrentFragment(videosFragment)
             }
             true
         }
