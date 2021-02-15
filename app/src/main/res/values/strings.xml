@@ -8,4 +8,7 @@
     <string name="error_message">Error message</string>
     <string name="retry">Retry</string>
     <string name="nature">Nature</string>
+    <string name="for_you">For You</string>
+    <string name="top_orientation">Top Orientation</string>
+    <string name="categories">Categories</string>
 </resources>
