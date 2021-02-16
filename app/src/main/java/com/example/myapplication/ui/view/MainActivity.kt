@@ -2,7 +2,10 @@ package com.example.myapplication.ui.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.example.myapplication.R
@@ -11,7 +14,8 @@ import com.example.myapplication.ui.main.fragment.photos.PhotosFragment
 import com.example.myapplication.ui.main.fragment.videos.VideosFragment
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(),
+    SearchView.OnQueryTextListener {
 
     private lateinit var dataBinding: ActivityMainBinding
     private lateinit var photosFragment: PhotosFragment
@@ -24,6 +28,39 @@ class MainActivity : AppCompatActivity() {
         addActionOnViews()
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu,menu)
+        val searchItem = menu?.findItem(R.id.menu_search)
+        val searchView= searchItem?.actionView as? SearchView
+        searchView?.isSubmitButtonEnabled=true
+        searchView?.setOnQueryTextListener(this)
+        return true
+    }
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        if(query!=null){
+            showMessage("the query is: $query")
+        }
+        return true
+    }
+
+    private fun showMessage(msge: String?) {
+        Toast.makeText(
+            this,
+            msge,
+            Toast.LENGTH_LONG
+        ).show()
+    }
+
+    override fun onQueryTextChange(newText: String?): Boolean {
+        if(newText!=null){
+            showMessage("the nextText is: $newText")
+        }
+        return true
+    }
+    private fun searchPhotos(query:String){
+
+    }
 
     private fun initialize() {
         dataBinding = DataBindingUtil.inflate(
@@ -59,6 +96,4 @@ class MainActivity : AppCompatActivity() {
             true
         }
     }
-
-
 }
