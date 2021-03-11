@@ -12,4 +12,6 @@
     <string name="top_orientation">Top Orientation</string>
     <string name="categories">Categories</string>
     <string name="search">search</string>
+    <string name="width">width</string>
+    <string name="height">height</string>
 </resources>

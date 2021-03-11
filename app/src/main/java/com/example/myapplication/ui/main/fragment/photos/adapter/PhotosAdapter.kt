@@ -1,27 +1,29 @@
 package com.example.myapplication.ui.main.fragment.photos.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.databinding.DataBindingUtil
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.myapplication.R
 import com.example.myapplication.data.model.PexelsPhoto
+import com.example.myapplication.databinding.ItemCategoryPhotoBinding
+import com.example.myapplication.databinding.ItemPhotoBinding
 
 class PhotosAdapter :
     PagingDataAdapter<PexelsPhoto, PhotosAdapter.ViewHolderPhotos>(PhotosDiffCallBack()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderPhotos {
-
+        val dataBinding: ItemPhotoBinding = DataBindingUtil.inflate(
+            LayoutInflater.from(parent.context),
+            R.layout.item_photo,
+            parent, false
+        )
 
         return ViewHolderPhotos(
-            LayoutInflater.from(parent.context).inflate(
-                R.layout.item_photo,
-                parent,
-                false
-            )
+           dataBinding
         )
     }
 
@@ -34,21 +36,27 @@ class PhotosAdapter :
         }
     }
 
-    inner class ViewHolderPhotos(view: View) : RecyclerView.ViewHolder(view) {
+    inner class ViewHolderPhotos(private val dataBinding: ItemPhotoBinding) :
+        RecyclerView.ViewHolder(dataBinding.root) {
 
-        private val imageViewPhoto = itemView.findViewById<ImageView>(R.id.image_view_photo)
 
         fun bindData(pexelPhoto: PexelsPhoto) {
-            Glide.with(imageViewPhoto)
+            Glide.with(dataBinding.imageViewPhoto)
                 .load(pexelPhoto.src.portrait)
-                .into(imageViewPhoto)
+                .into(dataBinding.imageViewPhoto)
+            dataBinding.apply {
+                photographerPhoto=pexelPhoto.photographer
+                widthHeightPhoto= "${pexelPhoto.height.toString()} " +
+                        "x ${ pexelPhoto.width.toString()} "
+
+            }
         }
 
         fun bindPlaceholder() {
-            Glide.with(imageViewPhoto)
+            Glide.with(dataBinding.imageViewPhoto)
                 .load("")
                 .placeholder(R.drawable.ic_baseline_image_24)
-                .into(imageViewPhoto)
+                .into(dataBinding.imageViewPhoto)
         }
 
 

@@ -50,7 +50,7 @@ class PhotosCategoryAdapter(
         ) {
             val photosAdapter = PhotosAdapter()
 
-            dataBinding.textViewCategoryName.text = pexelsPhotoCategory.name
+            dataBinding.textViewCategoryName.text = pexelsPhotoCategory.name.capitalize()
 
             dataBinding.recyclerviewPhoto.apply {
                 layoutManager = LinearLayoutManager(
