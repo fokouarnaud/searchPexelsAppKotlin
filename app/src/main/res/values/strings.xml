@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">CleanPexels</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="discover">discover</string>
+    <string name="categories">categories</string>
+    <string name="profile">profile</string>
+    <string name="favorites">favorites</string>
 </resources>
