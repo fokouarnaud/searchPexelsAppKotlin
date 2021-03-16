@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="widthHeightPhoto"
+            type="String" />
+
+        <variable
+            name="photographerPhoto"
+            type="String" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:orientation="vertical">
+
+        <com.google.android.material.card.MaterialCardView
+
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            app:cardBackgroundColor="@android:color/transparent"
+            app:cardElevation="0dp">
+
+            <ImageView
+                android:id="@+id/image_view_photo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/app_name"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/ic_round_image_24"
+                tools:src="@drawable/ic_round_image_24" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/text_view_photographer_photo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{photographerPhoto}"
+            android:textColor="@color/white"
+            android:paddingTop="8dp"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/text_view_width_height_photo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:alpha="0.6"
+            android:text="@{widthHeightPhoto}"
+            android:textColor="@color/white"
+            android:textSize="10sp" />
+
+
+    </LinearLayout>
+</layout>

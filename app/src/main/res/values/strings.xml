@@ -6,4 +6,7 @@
     <string name="categories">categories</string>
     <string name="profile">profile</string>
     <string name="favorites">favorites</string>
+    <string name="videos">videos</string>
+    <string name="photos">photos</string>
+    <string name="search_for_image_and_videos"><![CDATA[Search for image & videos]]></string>
 </resources>
