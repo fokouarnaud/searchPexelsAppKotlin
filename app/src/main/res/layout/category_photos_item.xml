@@ -14,12 +14,12 @@
             android:layout_marginTop="4dp"
             android:layout_marginBottom="4dp"
             android:padding="16dp"
-            android:text="What'is new"
+            android:text="@string/what_is_new"
             android:textSize="20sp" />
 
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/discover_view_pager_recyclerview"
+            android:id="@+id/photos_recyclerview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:listitem="@layout/photo_item" />

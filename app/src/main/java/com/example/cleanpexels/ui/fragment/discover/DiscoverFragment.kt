@@ -20,7 +20,6 @@ class DiscoverFragment : Fragment() {
 
     private lateinit var dataBinding: FragmentDiscoverBinding
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -30,15 +29,10 @@ class DiscoverFragment : Fragment() {
             R.layout.fragment_discover,
             container, false
         )
-
         return dataBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        addDataToViews()
-    }
-
-    private fun addDataToViews() {
         dataBinding.discoverViewPager.apply {
             adapter = DiscoverFragmentAdapter(
                 requireActivity()
@@ -46,21 +40,19 @@ class DiscoverFragment : Fragment() {
             isUserInputEnabled = false
         }
 
-
         TabLayoutMediator(
             dataBinding.discoverTabLayout,
             dataBinding.discoverViewPager
         ) { tab, position ->
             when (position) {
                 0 -> {
-                    tab.text = getString(R.string.videos)
+                    tab.text = getString(R.string.photos)
                 }
                 1 -> {
-                    tab.text = getString(R.string.photos)
+                    tab.text = getString(R.string.videos)
                 }
 
             }
         }.attach()
     }
-
 }

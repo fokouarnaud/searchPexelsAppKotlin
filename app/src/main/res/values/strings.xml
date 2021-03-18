@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">CleanPexels</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="discover">discover</string>
     <string name="categories">categories</string>
@@ -9,4 +8,13 @@
     <string name="videos">videos</string>
     <string name="photos">photos</string>
     <string name="search_for_image_and_videos"><![CDATA[Search for image & videos]]></string>
+    <string name="what_is_new">what\'s new</string>
+    <string name="error_loading">Error loading</string>
+    <string name="error_message">Error message</string>
+    <string name="retry">Retry</string>
+    <string name="nature">Nature</string>
+    <string name="search">search</string>
+    <string name="width">width</string>
+    <string name="height">height</string>
+    <string name="is_loading">is loading...</string>
 </resources>
