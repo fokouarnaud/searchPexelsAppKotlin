@@ -1,73 +1,57 @@
 package com.example.cleanpexels.ui.fragment.discover.tabLayout
 
 import android.app.Application
-import androidx.lifecycle.*
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.example.cleanpexels.R
 import com.example.cleanpexels.data.api.PexelsApiAccess
 import com.example.cleanpexels.data.model.PexelsPhoto
-import com.example.cleanpexels.data.model.PexelsPhotoCategory
+import com.example.cleanpexels.data.repository.PexelsCuratedPhotoPagingSource
 import com.example.cleanpexels.data.repository.PexelsPhotoPagingSource
-import com.example.cleanpexels.utils.DataGenerator
-import com.example.cleanpexels.utils.Resource
+import kotlinx.coroutines.flow.Flow
 
 
 class PhotosFragmentViewModel(application: Application) : ViewModel() {
 
     private val apiService = PexelsApiAccess.getApiService()
-    var liveDataListPexelsPhotosCategory: LiveData<Resource<List<PexelsPhotoCategory>>>
 
+    private val _allPhotos: Flow<PagingData<PexelsPhoto>>
+    val allPhotos
+        get() = _allPhotos
+
+    private val _newPhotos: Flow<PagingData<PexelsPhoto>>
+    val newPhotos
+        get() = _newPhotos
 
     init {
-        liveDataListPexelsPhotosCategory = liveData {
-            emit(Resource.loading(null))
-            try {
-                emit(
-                    Resource.success(
-                        getListPhotosCategory()
-                    )
-                )
-            } catch (exception: Exception) {
-                emit(
-                    Resource.error(
-                        application.applicationContext.getString(
-                            R.string.error_loading
-                        ), null
-                    )
-                )
-            }
-        }
+        _allPhotos = searchPhotos()
+        _newPhotos = curatedPhotos()
     }
 
-    fun searchPhotos(
-        query: String = "nature",
+    private fun searchPhotos(
+        query: String = "Ocean, Tigers, Pears",
         orientation: String = "landscape"
-    ): LiveData<PagingData<PexelsPhoto>> {
+    ): Flow<PagingData<PexelsPhoto>> {
         return Pager(
             PagingConfig(
                 pageSize = 20, enablePlaceholders = false
             )
         ) {
             PexelsPhotoPagingSource(apiService, query, orientation)
-        }.flow.cachedIn(viewModelScope).asLiveData()
+        }.flow.cachedIn(viewModelScope)
     }
 
-    fun getListPhotosCategory(): List<PexelsPhotoCategory> {
-        val listCategory = DataGenerator.getListCategory()
-        val listPexelsPhotosCategory: MutableList<PexelsPhotoCategory> = mutableListOf()
-
-        listCategory.forEach { targetCagetory ->
-            listPexelsPhotosCategory.add(
-                PexelsPhotoCategory(
-                    targetCagetory,
-                    searchPhotos(query = targetCagetory)
-                )
+    private fun curatedPhotos(): Flow<PagingData<PexelsPhoto>> {
+        return Pager(
+            PagingConfig(
+                pageSize = 20, enablePlaceholders = false
             )
-        }
-        return listPexelsPhotosCategory
+        ) {
+            PexelsCuratedPhotoPagingSource(apiService)
+        }.flow.cachedIn(viewModelScope)
     }
 
 

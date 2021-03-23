@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="test_large_display">48sp</dimen>
-    <dimen name="fab_margin">16dp</dimen>
     <dimen name="semi_fab_margin">8dp</dimen>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="column_1">150dp</dimen>
+    <dimen name="row_1">150dp</dimen>
+    <dimen name="column_2">250dp</dimen>
+    <dimen name="row_2">250dp</dimen>
+    <dimen name="gutter_vertical">8dp</dimen>
+    <dimen name="gutter_horizontal">8dp</dimen>
+    <dimen name="gutter_horizontal_small">4dp</dimen>
+    <dimen name="nav_header_vertical_spacing">8dp</dimen>
+    <dimen name="nav_header_height">176dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 </resources>

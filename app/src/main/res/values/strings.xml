@@ -17,4 +17,5 @@
     <string name="width">width</string>
     <string name="height">height</string>
     <string name="is_loading">is loading...</string>
+    <string name="browse_all">Browse all</string>
 </resources>

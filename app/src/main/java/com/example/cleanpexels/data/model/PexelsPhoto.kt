@@ -16,7 +16,7 @@ data class PexelsPhoto(
     val photographer_id: Long,
     @SerializedName("avg_color")
     val color: String,
-    val src: PexelsPhotoSrc,
+    val src: PexelsPhotoSrc
 ):Serializable{
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

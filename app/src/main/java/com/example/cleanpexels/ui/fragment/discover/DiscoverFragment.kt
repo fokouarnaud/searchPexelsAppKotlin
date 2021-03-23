@@ -13,8 +13,6 @@ import com.google.android.material.tabs.TabLayoutMediator
 
 /**
  * A simple [Fragment] subclass.
- * Use the [DiscoverFragment.newInstance] factory method to
- * create an instance of this fragment.
  */
 class DiscoverFragment : Fragment() {
 

@@ -16,10 +16,10 @@ class DiscoverFragmentAdapter  (fragmentActivity: FragmentActivity) :
     override fun createFragment(position: Int): Fragment {
         return when (position) {
             0 -> {
-                DiscoverTabLayoutFragment.getNewInstance(DiscoverTabLayoutFragment.TYPE_PHOTOS)
+                DiscoverTabLayoutFragment.newInstance(DiscoverTabLayoutFragment.TYPE_PHOTOS)
             }
             else -> {
-                DiscoverTabLayoutFragment.getNewInstance(DiscoverTabLayoutFragment.TYPE_VIDEOS)
+                DiscoverTabLayoutFragment.newInstance(DiscoverTabLayoutFragment.TYPE_VIDEOS)
             }
         }
     }

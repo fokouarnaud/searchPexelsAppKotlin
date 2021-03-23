@@ -98,7 +98,9 @@ dependencies {
     // multidex
     implementation "androidx.multidex:multidex:$multidex_version"
 
-
+    //
+    implementation "androidx.drawerlayout:drawerlayout:1.1.1"
+    
     // Test
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

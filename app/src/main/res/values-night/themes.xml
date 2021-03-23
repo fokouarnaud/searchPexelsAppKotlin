@@ -5,6 +5,10 @@
         <item name="colorPrimary">@color/purple_200</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/black</item>
+
+
+        <item name="colorPrimaryDark">#202125</item>
+        <item name="colorAccent">@color/colorAccent</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_200</item>
@@ -12,5 +16,12 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="background_color">@color/dark_bg</item>
+        <item name="text_color">@color/dark_text_color</item>
+        <item name="text_sec_color">@color/dark_text_sec_color</item>
+        <item name="search_bg_color">@color/dark_search_bg</item>
+        <item name="fab_bg_color">@color/dark_fab_color</item>
+        <item name="fab_tint_color">@color/dark_fab_tint</item>
+        <item name="nav_icon_tint">@color/dark_nav_icon_tint</item>
     </style>
 </resources>
