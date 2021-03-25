@@ -18,4 +18,12 @@
     <string name="height">height</string>
     <string name="is_loading">is loading...</string>
     <string name="browse_all">Browse all</string>
+    <string name="art_design">Art &amp; Design</string>
+    <string name="augmented_reality">Augmented Reality</string>
+    <string name="beauty">Beauty</string>
+    <string name="business">Business</string>
+    <string name="comics">Comics</string>
+    <string name="communication">Communication</string>
+    <string name="school">School</string>
+    <string name="love">Love</string>
 </resources>

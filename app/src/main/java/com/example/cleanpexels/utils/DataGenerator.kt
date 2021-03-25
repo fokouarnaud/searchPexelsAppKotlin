@@ -5,8 +5,12 @@ class DataGenerator {
     companion object {
         fun getListCategory(): List<String> {
             return listOf<String>(
-                "What's new",
-                "Browser All"
+                "Art & Design",
+                "Augmented Reality",
+                "Beauty",
+                "Business",
+                "Comics",
+                ""
             )
         }
     }

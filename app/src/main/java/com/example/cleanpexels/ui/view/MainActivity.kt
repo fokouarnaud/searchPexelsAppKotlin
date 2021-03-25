@@ -41,7 +41,6 @@ class MainActivity : AppCompatActivity() {
         categoriesFragment = CategoriesFragment()
         discoverFragment = DiscoverFragment()
         favoritesFragment = FavoritesFragment()
-        profileFragment = ProfileFragment()
 
     }
 
@@ -61,7 +60,6 @@ class MainActivity : AppCompatActivity() {
                 R.id.discover_item -> setCurrentFragment(discoverFragment)
                 R.id.categories_item -> setCurrentFragment(categoriesFragment)
                 R.id.favorites_item -> setCurrentFragment(favoritesFragment)
-                R.id.profile_item -> setCurrentFragment(profileFragment)
             }
             true
         }

@@ -53,7 +53,7 @@ class DiscoverTabLayoutFragment : Fragment() {
 
 
         val whatIsNewPhotosAdapter = PhotosAdapter()
-        val browseAllPhotosAdapter = PhotosLargeAdapter()
+       // val browseAllPhotosAdapter = PhotosLargeAdapter()
 
         dataBinding.whatIsNewPhotosRecyclerview.apply {
             layoutManager = LinearLayoutManager(
