@@ -1,13 +1,16 @@
 package com.example.cleanpexels.ui.fragment.discover
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.example.cleanpexels.R
 import com.example.cleanpexels.databinding.FragmentDiscoverBinding
+import com.example.cleanpexels.ui.view.SearchActivity
 import com.google.android.material.tabs.TabLayoutMediator
 
 
@@ -31,6 +34,16 @@ class DiscoverFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        dataBinding.searchBarLayout.searchTextView.apply {
+            isFocusable = false
+            setOnClickListener {
+                val intent = Intent(requireActivity(), SearchActivity::class.java)
+                intent.action = Intent.ACTION_SEARCH
+                startActivity(intent)
+            }
+        }
+        
         dataBinding.discoverViewPager.apply {
             adapter = DiscoverFragmentAdapter(
                 requireActivity()

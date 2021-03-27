@@ -55,7 +55,9 @@
 
                         app:layout_scrollFlags="scroll|enterAlways">
 
-                        <include layout="@layout/search_bar" />
+                        <include layout="@layout/search_bar"
+                            android:id="@+id/search_bar_layout"
+                            />
 
                     </androidx.appcompat.widget.Toolbar>
 

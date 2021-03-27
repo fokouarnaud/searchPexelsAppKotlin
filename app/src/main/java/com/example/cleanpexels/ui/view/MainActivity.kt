@@ -1,7 +1,9 @@
 package com.example.cleanpexels.ui.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -10,7 +12,6 @@ import com.example.cleanpexels.databinding.ActivityMainBinding
 import com.example.cleanpexels.ui.fragment.categories.CategoriesFragment
 import com.example.cleanpexels.ui.fragment.discover.DiscoverFragment
 import com.example.cleanpexels.ui.fragment.favorites.FavoritesFragment
-import com.example.cleanpexels.ui.fragment.profile.ProfileFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,7 +19,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var categoriesFragment: CategoriesFragment
     private lateinit var discoverFragment: DiscoverFragment
     private lateinit var favoritesFragment: FavoritesFragment
-    private lateinit var profileFragment: ProfileFragment
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,10 +43,12 @@ class MainActivity : AppCompatActivity() {
         discoverFragment = DiscoverFragment()
         favoritesFragment = FavoritesFragment()
 
+
     }
 
     private fun addDataToViews() {
         setCurrentFragment(discoverFragment)
+
     }
 
     private fun setCurrentFragment(fragment: Fragment) {
